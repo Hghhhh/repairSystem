@@ -1,0 +1,36 @@
+server:
+  port: 8081
+shiro:
+  hmac:
+    algorithm: HmacMD5
+    secretkey: banzhuan
+
+
+jwt:
+  secret-key: jwtbanzhuan
+  algorithm: HS512
+
+
+
+spring:
+  devtools:
+    restart:
+      enabled: true  #热部署生效
+      additional-paths: src/main/java  #设置重启的目录,添加那个目录的文件需要restart
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/repair_system?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      username: root
+      password: 123456
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #解决列名必须下划线的问题
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate
+
