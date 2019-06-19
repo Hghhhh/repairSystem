@@ -22,9 +22,3 @@ spring:
       hibernate:
         hbm2ddl:
           auto: validate
-
-# JWT
-jwt:
-  header: Authorization
-  secret-key: jwtbanzhuan
-  tokenHead: "Bearer "

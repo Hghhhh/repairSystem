@@ -7,8 +7,8 @@ public class CodeMsg {
 
     //通用的错误码
     public static CodeMsg SUCCESS = new CodeMsg(0, "success");
-    public static CodeMsg SERVER_ERROR = new CodeMsg(777, "服务端异常");
-    public static CodeMsg PASSWORD_ERROR = new CodeMsg(1, "密码错误");
+    public static CodeMsg SERVER_ERROR = new CodeMsg(5, "服务端异常");
+    public static CodeMsg PASSWORD_ERROR = new CodeMsg(3, "密码错误");
     public int getCode() {
         return code;
     }

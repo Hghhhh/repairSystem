@@ -3,7 +3,7 @@ package com.banzhuan.authservice.entity;
 import lombok.Data;
 
 
-@Data //lomback注解，自动生成setter和getter
+@Data
 public class User {
 
 
@@ -20,5 +20,7 @@ public class User {
     private String telphone;
 
     private Integer dormitoryId;
+
+
 
 }

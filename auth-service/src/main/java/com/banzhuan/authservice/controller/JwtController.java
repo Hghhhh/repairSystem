@@ -1,5 +1,6 @@
 package com.banzhuan.authservice.controller;
 
+import com.banzhuan.authservice.dto.CodeMsg;
 import com.banzhuan.authservice.dto.Result;
 import com.banzhuan.authservice.entity.Resource;
 import com.banzhuan.authservice.entity.Role;
@@ -32,9 +33,22 @@ public class JwtController {
     @Autowired
     private AccountService accountService;
 
+    @PostMapping("apply-tokenByAdmin")
+    public Result<String> applyTokenForAdmin(@RequestParam(name = "clientKey") String clientKey,@RequestParam(name = "mix") String mix,@RequestParam(name = "timeStamp") String timeStamp,@RequestParam(name = "digest") String digest) {
+        // 签发一个Json Web Token
+        String jwt = JwtUtil.issueJwt(secretKey, clientKey,
+                "banzhuan", null, "admin", "*",getSignatureAlgorithm());
+        return Result.success(jwt);
+    }
+
+
+
     @PostMapping("apply-token")
     public Result<String> applyToken(@RequestParam(name = "clientKey") String clientKey,@RequestParam(name = "mix") String mix,@RequestParam(name = "timeStamp") String timeStamp,@RequestParam(name = "digest") String digest) {
         User user = accountService.getUser(clientKey).getData();
+        if(user==null){
+            return Result.error(CodeMsg.USER_NOT_FOUND);
+        }
         System.out.println("         "+clientKey);
         Role role = user.getRole();
         Set<Resource> resources = role.getResources();

@@ -34,10 +34,10 @@ public class Repair {
     private Date repairedTime;
 
     //报修人的openId
-    private String applicantId;
+    private Integer applicantId;
 
     //维修人的openId
-    private String repairmanId;
+    private Integer repairmanId;
 
     //0表示待修理，1表示正在修理，2表示修理完成
     private int state;

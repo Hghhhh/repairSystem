@@ -23,8 +23,7 @@ spring:
         hbm2ddl:
           auto: validate
 
-jwt:
-  secret-key: jwtbanzhuan
-  algorithm: HS512
-  header: Authorization
-  tokenHead: "Bearer "
+#获取token的配置
+hmac:
+  secretKey: banzhuan
+  algorithm: HmacMD5

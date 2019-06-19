@@ -1,5 +1,4 @@
 package com.banzhuan.authservice.util;
-
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -7,6 +6,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.xml.bind.DatatypeConverter;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class JwtUtil {
@@ -22,8 +23,8 @@ public class JwtUtil {
      * @return json web token
      */
     public static String issueJwt(String jwtSecretKey
-            ,String subject,String issuer,Long period,String roles
-            ,String permissions,SignatureAlgorithm algorithm) {
+            , String subject, String issuer, Long period, String roles
+            , String permissions, SignatureAlgorithm algorithm) {
 
         // 当前时间戳(精确到毫秒)
         long currentTimeMillis = System.currentTimeMillis();

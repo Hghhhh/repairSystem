@@ -1,4 +1,4 @@
-package com.banzhuan.authservice.util;
+package com.banzhuan.accountservice.util;
 
 import org.apache.shiro.codec.Hex;
 

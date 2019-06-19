@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8086
 
 spring:
   devtools:
@@ -22,14 +22,3 @@ spring:
       hibernate:
         hbm2ddl:
           auto: validate
-
-
-#获取token的配置
-hmac:
-  secretKey: banzhuan
-  algorithm: HmacMD5
-
-#微信配置
-wechat:
-  app_id: wx3e8f2155d7875447
-  secret: b01b2b6813602e79957dd16fb51f5f69
