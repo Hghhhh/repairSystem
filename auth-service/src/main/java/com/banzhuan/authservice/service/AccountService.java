@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name="ACCOUNT-SERVICE",fallback = DataFallBack.class)
 public interface AccountService {
 
-    @GetMapping("/users/{openId}")
+    @GetMapping("/account-service/users/{openId}")
     Result<User> getUser(@PathVariable("openId") String openId);
 
 }

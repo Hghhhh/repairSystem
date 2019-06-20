@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @Slf4j
-@RestController
+@RestController("/account-service")
 public class WeChatController {
     //appId
     @Value("${wechat.app_id}")

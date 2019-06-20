@@ -15,7 +15,7 @@ import java.util.Random;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/account-service/users")
 public class AccountController {
 
     @Value("${hmac.secretKey}")

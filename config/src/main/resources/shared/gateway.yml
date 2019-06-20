@@ -1,33 +1,33 @@
 server:
-  port: 4000
+  port: 80
 
 zuul:
   ignoredServices: '*'
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
-
   routes:
-    auth-service:
-        path: /uaa/**
-        url: http://auth-service:5000
-        stripPrefix: false
-        sensitiveHeaders:
-
     account-service:
-        path: /accounts/**
-        serviceId: account-service
+        path: /account-service/**
+        serviceId: ACCOUNT-SERVICE  #这里写eureka的中注册的服务id
         stripPrefix: false
         sensitiveHeaders:
+    address-service:
+        path: /address-service/**
+        serviceId: ADDRESS-SERVICE
+        stripPrefix: false
+        sensitiveHeaders:
+    backend-service:
+        path: /backend-service/**
+        serviceId: BACKEND-SERVICE
+        stripPrefix: false
+        sensitiveHeaders:
+    repair-service:
+      path: /repair-service/**
+      serviceId: REPAIR-SERVICE
+      stripPrefix: false
+      sensitiveHeaders:
 
-    statistics-service:
-        path: /statistics/**
-        serviceId: statistics-service
-        stripPrefix: false
-        sensitiveHeaders:
+jwt:
+  secret-key: jwtbanzhuan
 
-    notification-service:
-        path: /notifications/**
-        serviceId: notification-service
-        stripPrefix: false
-        sensitiveHeaders:

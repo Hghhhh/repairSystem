@@ -40,8 +40,8 @@
 		<module>account-service</module>
 		<module>bankend-service</module>
 		<module>repair-service</module>
-		<module>gateway</module>
 		<module>address-service</module>
+		<module>gateway</module>
 	</modules>
 
 </project>
