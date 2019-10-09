@@ -16,8 +16,8 @@ public class RepairServiceImpl implements RepairService{
     private RepairDao repairDao;
 
     @Override
-    public Integer addRepair(Repair repair) {
-        return repairDao.save(repair).getId();
+    public Repair addRepair(Repair repair) {
+        return repairDao.save(repair);
     }
 
     @Override
@@ -27,9 +27,8 @@ public class RepairServiceImpl implements RepairService{
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Integer deleteById(Integer id) {
+    public void deleteById(Integer id) {
         repairDao.deleteById(id);
-        return 1;
     }
 
     @Override
@@ -42,9 +41,12 @@ public class RepairServiceImpl implements RepairService{
         return repairDao.findAll();
     }
 
+    /*
+    查找待维修的维修单
+     */
     @Override
     public List<Repair> getRepairByAddressId(List<Integer> addressIds) {
-        return repairDao.findByAddressIdIn(addressIds);
+        return repairDao.findByStateAndAddressIdIn(0,addressIds);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -55,7 +57,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Integer reapairManFinshRepair(Integer repairId, Integer repairmanId) {
-        return repairDao.repairManUpdateRepair(repairId,repairmanId);
+    public Integer finshRepair(Integer repairId) {
+        return repairDao.finishRepair(repairId);
     }
 }

@@ -5,15 +5,11 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "tb_repairman")
 @Data //lomback注解，自动生成setter和getter
-public class User {
+public class RepairMan {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name="number")
     private String number;
 
     @Column(name="name")
@@ -22,9 +18,5 @@ public class User {
     @Column(name="telphone",columnDefinition="CHAR")
     private String telphone;
 
-    @Column(name="dormitoryId")
-    private Integer dormitoryId;
-
-    private Integer dormitoryNum;
-
+    private String addressIds;
 }

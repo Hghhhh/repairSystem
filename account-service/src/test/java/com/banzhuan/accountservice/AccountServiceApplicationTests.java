@@ -1,11 +1,7 @@
 package com.banzhuan.accountservice;
 
-import com.banzhuan.accountservice.entity.Resource;
-import com.banzhuan.accountservice.entity.Role;
 import com.banzhuan.accountservice.service.AccountService;
 
-import com.banzhuan.accountservice.service.ResourceService;
-import com.banzhuan.accountservice.service.RoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

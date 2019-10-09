@@ -14,8 +14,6 @@ public class Repair {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
 
-    private int addressId;
-
     private String reason;
 
     //预约时间
@@ -39,6 +37,22 @@ public class Repair {
     //维修人的openId
     private Integer repairmanId;
 
-    //0表示待修理，1表示正在修理，2表示修理完成
+    //0表示待修理，1表示正在修理，2表示修理完成，3无法报修
     private int state;
+
+    //报修人姓名
+    private String applicantName;
+
+    //报修人电话
+    private String telphone;
+
+    //报修地址
+    private String address;
+
+    //图片
+    private String pictures;
+
+    //报修地址id
+    private Integer addressId;
+
 }

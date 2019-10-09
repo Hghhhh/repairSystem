@@ -14,18 +14,18 @@ public class AdminServiceImpl implements AdminService {
     private AdminDao adminDao;
 
     @Override
-    public Boolean login(String account, String password) {
+    public Admin login(String account, String password) {
         Admin admin = adminDao.findAdminByAccount(account);
-        if(admin==null){
-            return false;
+        if(admin==null || !PasswordUtil.verify(password,admin.getPassword())){
+            return null;
         }else{
-            //验证密码
-            return PasswordUtil.verify(password,admin.getPassword());
+            admin.setPassword(null);
+            return admin;
         }
     }
 
     @Override
-    public Admin insertAdmin(Admin admin) {
+    public Admin saveAdmin(Admin admin) {
         //加盐加密
         admin.setPassword(PasswordUtil.generate(admin.getPassword()));
         return adminDao.save(admin);

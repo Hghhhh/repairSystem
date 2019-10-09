@@ -13,27 +13,14 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
 
-    @Override
-    public User getUser(String openId) {
-        return accountDao.findByOpenId(openId);
+    public User getUser(int id) {
+        return accountDao.findById(id);
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public User save(User user) {
         return accountDao.save(user);
-    }
-
-    @Transactional
-    @Override
-    public Integer updateUserInfo(@RequestParam String number,@RequestParam String name,@RequestParam Integer dormitoryId,@RequestParam String roleName,@RequestParam String openId) {
-        return accountDao.updateUserInfo( number, name, dormitoryId, roleName, openId);
-    }
-
-    @Transactional
-    @Override
-    public Integer updateTelPhone(String telPhone, String openId) {
-        return accountDao.updateTelPhone(telPhone,openId);
     }
 
 

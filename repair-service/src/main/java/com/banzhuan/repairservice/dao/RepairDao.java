@@ -13,17 +13,18 @@ public interface RepairDao extends JpaRepository<Repair,Integer> {
 
     List<Repair> findByRepairmanId(Integer repairmanId);
 
-    List<Repair> findByAddressIdIn(List<Integer> addressId);
+    List<Repair> findByStateAndAddressIdIn(Integer state,List<Integer> addressId);
 
     @Modifying
-    @Query(value = "update tb_repair r set r.repairmanId=?2,r.state=1 where r.id=?1 and r.repairmanId is null",
+    @Query(value = "update tb_repair r set r.repairmanId=?2,r.state=1,r.repairTime=unix_timestamp(now()) where r.id=?1",
             nativeQuery = true)
     Integer repairManGetRepair(Integer id,Integer repairmanId);
 
 
     @Modifying
-    @Query(value = "update tb_repair r set r.state=2 where r.repairmanId=?2 and r.id=?1",
+    @Query(value = "update tb_repair r set r.state=2,repairedTime=unix_timestamp(now()) where r.id=?1",
             nativeQuery = true)
-    Integer repairManUpdateRepair(Integer id,Integer repairmanId);
+    Integer finishRepair(Integer id);
+
 
 }

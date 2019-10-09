@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface RepairService {
 
-    Integer addRepair(Repair repair);
+    Repair addRepair(Repair repair);
 
     List<Repair> getRepairByApplicantId(Integer applicantId);
 
-    Integer deleteById(Integer id);
+    void deleteById(Integer id);
 
     List<Repair> getRepairByRepairmanId(Integer repairmanId);
 
@@ -21,6 +21,6 @@ public interface RepairService {
 
     Integer  repairManGetRepair(Integer repairId,Integer repairmanId);
 
-    Integer reapairManFinshRepair(Integer repairId,Integer repairmanId);
+    Integer finshRepair(Integer repairId);
 
 }

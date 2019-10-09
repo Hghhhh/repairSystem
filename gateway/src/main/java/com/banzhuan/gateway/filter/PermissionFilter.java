@@ -40,11 +40,8 @@ public class PermissionFilter extends ZuulFilter {
         String token = request.getHeader("Authorization");
         String method = request.getMethod();
         String url = request.getRequestURI();
-        System.out.println("asdadada             "+url+" ");
-        System.out.println("asdadada             "+method+" ");
         //对免验证接口直接通过
         if(url.equals("/account-service/users")&&method.equals("PUT") || url.equals("/account-service/wxLogin") || url.equals("/backend-service/login")){
-            System.out.println("11111111111111");
             ctx.setSendZuulResponse(true);// 对该请求进行路由
             ctx.setResponseStatusCode(200);
             ctx.set("isSuccess", true);// 设值，可以在多个过滤器时使用

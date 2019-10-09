@@ -5,19 +5,17 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_admin")
+@Table(name="tb_address")
 @Data
-public class Admin {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
     @Column
-    private String account;
+    private String location;
 
     @Column
-    private String password;
-
-    private Integer state;
+    private int type;
 
 }
