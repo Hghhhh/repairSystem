@@ -26,6 +26,14 @@ public class RepairManController {
         return Result.success(repairManService.findByNumber(number));
     }
 
+    @GetMapping("isRepairman/{number}")
+    public Result<Boolean> isRepairMan(@PathVariable("number") String number){
+        if(repairManService.findByNumber(number)==null){
+            return Result.success(false);
+        }
+        return Result.success(true);
+    }
+
     @PostMapping("repairman")
     public Result<RepairMan> update(@RequestParam String repairMan){
         RepairMan repairMan1 = JacksonUtil.json2pojo(repairMan,RepairMan.class);
