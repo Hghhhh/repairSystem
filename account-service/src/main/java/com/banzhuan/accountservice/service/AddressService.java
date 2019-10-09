@@ -10,6 +10,6 @@ import java.util.List;
 @FeignClient("backend-service")
 public interface AddressService {
 
-    @GetMapping
-    Result<List<Address>> getAddress();
+    @GetMapping("/backend-service/address")
+    Result<List<Address>> address();
 }

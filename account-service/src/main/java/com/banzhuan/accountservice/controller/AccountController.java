@@ -1,6 +1,5 @@
 package com.banzhuan.accountservice.controller;
 
-import com.banzhuan.accountservice.cache.AddressCache;
 import com.banzhuan.accountservice.dto.Result;
 import com.banzhuan.accountservice.entity.User;
 import com.banzhuan.accountservice.service.AccountService;
@@ -21,7 +20,7 @@ public class AccountController {
         return Result.success(accountService.getUser(userId));
     }
 
-    @PutMapping
+    @PostMapping
     public Result<User> updateUser(@RequestParam String user){
         User user1 = JacksonUtil.json2pojo(user,User.class);
         return Result.success(accountService.save(user1));

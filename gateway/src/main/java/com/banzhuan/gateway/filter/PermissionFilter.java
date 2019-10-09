@@ -1,5 +1,5 @@
 package com.banzhuan.gateway.filter;
-
+/*
 import com.banzhuan.gateway.pojo.JwtPlayload;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -80,3 +80,4 @@ public class PermissionFilter extends ZuulFilter {
         }
     }
 }
+*/

@@ -20,14 +20,14 @@ public class AddressCache {
     @PostConstruct
     private void init(){
         if(addresses==null){
-            addresses = addressService.getAddress().getData();
+            addresses = addressService.address().getData();
         }
     }
 
     @Scheduled(cron = "0 */10 * * * *")
     private void addressJob(){
         synchronized (addresses){
-            addresses = addressService.getAddress().getData();
+            addresses = addressService.address().getData();
         }
     }
 

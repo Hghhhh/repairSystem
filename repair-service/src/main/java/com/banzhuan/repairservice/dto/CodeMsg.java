@@ -9,6 +9,7 @@ public class CodeMsg {
     public static CodeMsg SUCCESS = new CodeMsg(0, "success");
     public static CodeMsg SERVER_ERROR = new CodeMsg(5, "服务端异常");
     public static CodeMsg DOUBLE_DO_ERROR = new CodeMsg(4,"请勿重复操作");
+    public static CodeMsg PARAM_ERROR    = new CodeMsg(1,"参数错误");
 
     public int getCode() {
         return code;

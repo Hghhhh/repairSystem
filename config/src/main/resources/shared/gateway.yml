@@ -12,11 +12,6 @@ zuul:
         serviceId: ACCOUNT-SERVICE  #这里写eureka的中注册的服务id
         stripPrefix: false
         sensitiveHeaders:
-    address-service:
-        path: /address-service/**
-        serviceId: ADDRESS-SERVICE
-        stripPrefix: false
-        sensitiveHeaders:
     backend-service:
         path: /backend-service/**
         serviceId: BACKEND-SERVICE

@@ -1,5 +1,6 @@
 package com.banzhuan.repairservice.service;
 
+import com.banzhuan.repairservice.dto.RepairStaticDto;
 import com.banzhuan.repairservice.entity.Repair;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public interface RepairService {
 
     void deleteById(Integer id);
 
-    List<Repair> getRepairByRepairmanId(Integer repairmanId);
+    List<Repair> getRepairByRepairmanId(String repairmanId);
 
     List<Repair> getAllRepair();
 
@@ -23,4 +24,8 @@ public interface RepairService {
 
     Integer finshRepair(Integer repairId);
 
+    List<Repair> findByStateAndRepairmanIdAndAddressId(Integer state,String repairmanId,Integer addressId);
+
+
+    List<RepairStaticDto> findByAddressIdAndAppointmentTimeBetween(Integer addressId, int beginT, int endT);
 }
