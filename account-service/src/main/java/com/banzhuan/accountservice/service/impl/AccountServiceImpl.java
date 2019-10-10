@@ -13,8 +13,8 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountDao accountDao;
 
-    public User getUser(int id) {
-        return accountDao.findById(id);
+    public User getUser(String number) {
+        return accountDao.findById(number).orElse(null);
     }
 
     @Transactional(rollbackFor = Exception.class)

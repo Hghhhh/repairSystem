@@ -31,11 +31,15 @@ public class AdminController {
     }
 
     @PostMapping("/adminAccountSave")
-    public Result<Admin> saveAdminAccount(Integer adminId,@RequestParam String account, @RequestParam String password){
+    public Result<Admin> saveAdminAccount(@RequestParam Integer adminId,@RequestParam String account, @RequestParam String password,@RequestParam int state){
         Admin admin = new Admin();
+        if(adminId<=0){
+            adminId = null;
+        }
         admin.setId(adminId);
         admin.setAccount(account);
         admin.setPassword(password);
+        admin.setState(state);
         return Result.success(adminService.saveAdmin(admin));
     }
 }

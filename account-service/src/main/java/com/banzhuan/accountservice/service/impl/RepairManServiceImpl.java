@@ -22,7 +22,7 @@ public class RepairManServiceImpl  implements RepairManService {
     @Override
     public RepairMan findByNumber(String number) {
         Optional<RepairMan> res =  repairManDao.findById(number);
-        return res.get();
+        return res.orElse(null);
     }
 
     @Override

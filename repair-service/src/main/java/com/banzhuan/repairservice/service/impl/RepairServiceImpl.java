@@ -6,6 +6,8 @@ import com.banzhuan.repairservice.entity.Repair;
 import com.banzhuan.repairservice.service.RepairService;
 import com.banzhuan.repairservice.util.TimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +27,7 @@ public class RepairServiceImpl implements RepairService{
     }
 
     @Override
-    public List<Repair> getRepairByApplicantId(Integer applicantId) {
+    public List<Repair> getRepairByApplicantId(String applicantId) {
         return repairDao.findByApplicantId(applicantId);
     }
 
@@ -55,7 +57,7 @@ public class RepairServiceImpl implements RepairService{
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Integer repairManGetRepair(Integer repairId, Integer repairmanId) {
+    public Integer repairManGetRepair(Integer repairId, String repairmanId) {
         return repairDao.repairManGetRepair(repairId,repairmanId);
     }
 
@@ -67,7 +69,15 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<Repair> findByStateAndRepairmanIdAndAddressId(Integer state, String repairmanId, Integer addressId) {
-        return repairDao.findByStateAndRepairmanIdAndAddressId(state,repairmanId,addressId);
+        Repair repair =  new Repair();
+        //I assume that you have setters like bellow
+        repair.setState(state);
+        repair.setRepairmanId(repairmanId);
+        repair.setAddressId(addressId);
+        ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreNullValues();
+
+        Example<Repair> example = Example.of(repair, matcher);
+        return repairDao.findAll(example);
     }
 
     @Override

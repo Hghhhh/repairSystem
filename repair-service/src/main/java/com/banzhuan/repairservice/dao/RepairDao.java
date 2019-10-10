@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RepairDao extends JpaRepository<Repair,Integer> {
 
-    List<Repair> findByApplicantId(Integer applicantId);
+    List<Repair> findByApplicantId(String applicantId);
 
     List<Repair> findByRepairmanId(String repairmanId);
 
@@ -20,7 +20,7 @@ public interface RepairDao extends JpaRepository<Repair,Integer> {
     @Modifying
     @Query(value = "update tb_repair r set r.repairmanId=?2,r.state=1,r.repairTime=unix_timestamp(now()) where r.id=?1",
             nativeQuery = true)
-    Integer repairManGetRepair(Integer id,Integer repairmanId);
+    Integer repairManGetRepair(Integer id,String repairmanId);
 
 
     @Modifying

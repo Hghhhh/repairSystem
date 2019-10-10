@@ -33,7 +33,7 @@ public class RepairController {
     }
 
     @GetMapping("/userRepair/{applicantId}")
-    public Result<List<Repair>> getRepairByApplicantId(@PathVariable(value = "applicantId") Integer applicantId){
+    public Result<List<Repair>> getRepairByApplicantId(@PathVariable(value = "applicantId") String applicantId){
         return Result.success(repairService.getRepairByApplicantId(applicantId));
     }
 
@@ -44,6 +44,7 @@ public class RepairController {
 
     @GetMapping("/allRepairs")
     public Result<List<Repair>> getAllRepair(Integer state,String repairmanId,Integer addressId){
+
         return Result.success(repairService.findByStateAndRepairmanIdAndAddressId(state,repairmanId,addressId));
     }
 
@@ -57,8 +58,8 @@ public class RepairController {
         return Result.success(repairService.getRepairByAddressId(addressIds2));
     }
 
-    @PostMapping("/doRepair")
-    public  Result<Integer> repairManGetRepair(@RequestParam  Integer repairId,@RequestParam Integer repairmanId) {
+    @PutMapping("/doRepair")
+    public  Result<Integer> repairManGetRepair(@RequestParam  Integer repairId,@RequestParam String repairmanId) {
         if(repairService.repairManGetRepair(repairId,repairmanId)==0){
             return  Result.error(CodeMsg.DOUBLE_DO_ERROR);
         }

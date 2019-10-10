@@ -35,7 +35,7 @@ public class RepairManController {
     }
 
     @PostMapping("repairman")
-    public Result<RepairMan> update(@RequestParam String repairMan){
+    public Result<RepairMan> update(@RequestBody String repairMan){
         RepairMan repairMan1 = JacksonUtil.json2pojo(repairMan,RepairMan.class);
         return Result.success(repairManService.save(repairMan1));
     }

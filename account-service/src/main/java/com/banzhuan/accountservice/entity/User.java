@@ -9,16 +9,13 @@ import javax.persistence.*;
 @Data //lomback注解，自动生成setter和getter
 public class User {
 
-    @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer id;
 
-    @Column(name="number")
     private String number;
 
     @Column(name="name")
     private String name;
 
+    @Id
     @Column(name="telphone",columnDefinition="CHAR")
     private String telphone;
 

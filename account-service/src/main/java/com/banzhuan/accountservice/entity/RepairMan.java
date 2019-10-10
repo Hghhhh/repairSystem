@@ -9,12 +9,12 @@ import javax.persistence.*;
 @Data //lomback注解，自动生成setter和getter
 public class RepairMan {
 
-    @Id
     private String number;
 
     @Column(name="name")
     private String name;
 
+    @Id
     @Column(name="telphone",columnDefinition="CHAR")
     private String telphone;
 

@@ -10,7 +10,7 @@ public interface RepairService {
 
     Repair addRepair(Repair repair);
 
-    List<Repair> getRepairByApplicantId(Integer applicantId);
+    List<Repair> getRepairByApplicantId(String applicantId);
 
     void deleteById(Integer id);
 
@@ -20,12 +20,11 @@ public interface RepairService {
 
     List<Repair> getRepairByAddressId(List<Integer> addressIds);
 
-    Integer  repairManGetRepair(Integer repairId,Integer repairmanId);
+    Integer  repairManGetRepair(Integer repairId,String repairmanId);
 
     Integer finshRepair(Integer repairId);
 
     List<Repair> findByStateAndRepairmanIdAndAddressId(Integer state,String repairmanId,Integer addressId);
-
 
     List<RepairStaticDto> findByAddressIdAndAppointmentTimeBetween(Integer addressId, int beginT, int endT);
 }

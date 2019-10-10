@@ -5,7 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 
-public interface AccountDao extends JpaRepository<User, Integer> {
-
-    User findById(int id);
+public interface AccountDao extends JpaRepository<User, String> {
 }

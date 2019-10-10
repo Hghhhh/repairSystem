@@ -15,13 +15,13 @@ public class AccountController {
     private AccountService accountService;
 
     @GetMapping("/{userId}")
-    public Result<User> getUser(@PathVariable("userId") Integer userId){
+    public Result<User> getUser(@PathVariable("userId") String number){
 
-        return Result.success(accountService.getUser(userId));
+        return Result.success(accountService.getUser(number));
     }
 
     @PostMapping
-    public Result<User> updateUser(@RequestParam String user){
+    public Result<User> updateUser(@RequestBody String user){
         User user1 = JacksonUtil.json2pojo(user,User.class);
         return Result.success(accountService.save(user1));
     }
