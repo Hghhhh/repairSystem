@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `location` varchar(20) NOT NULL COMMENT '地址',
-  `type` int(1) NOT NULL COMMENT '0代表宿舍，1代表教室',
+  `type` int(1) NOT NULL DEFAULT '0' COMMENT '0代表宿舍，1代表教室',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tb_address` */
 
-insert  into `tb_address`(`id`,`location`,`type`) values (1,'123',1);
+insert  into `tb_address`(`id`,`location`,`type`) values (1,'西一',1),(2,'西二',1),(3,'西三',1),(4,'西四',0);
 
 /*Table structure for table `tb_admin` */
 
@@ -41,11 +41,11 @@ CREATE TABLE `tb_admin` (
   `password` varchar(50) NOT NULL,
   `state` int(11) NOT NULL DEFAULT '0' COMMENT '0普通管理员；1超级管理员',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tb_admin` */
 
-insert  into `tb_admin`(`id`,`account`,`password`,`state`) values (1,'admin','13178b04019003898373415412302948c46cb56285d5999d',0);
+insert  into `tb_admin`(`id`,`account`,`password`,`state`) values (1,'admin','e98a24c95920715c3dd6900aa17d0e04021610398955005e',1),(2,'admin','18249c988f29d2695ac6dd23e3d39334b824551a8818d101',1),(3,'admin','514862e4b16c21bd1351ea9394d09c62017015382350ee06',1),(4,'admin','b52a4db18d5341e20207868226d93e68a991f38c4cd3ef8d',1);
 
 /*Table structure for table `tb_comment` */
 
@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS `tb_repair`;
 
 CREATE TABLE `tb_repair` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `applicantId` int(11) NOT NULL COMMENT '报修人id',
+  `applicantId` varchar(11) NOT NULL COMMENT '报修人id',
   `applicantName` varchar(50) NOT NULL COMMENT '报修人姓名',
   `telphone` char(11) NOT NULL COMMENT '手机号',
   `addressId` int(11) NOT NULL COMMENT '报修地址id',
@@ -80,9 +80,11 @@ CREATE TABLE `tb_repair` (
   `state` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0表示待修理，1表示正在修理，2表示修理完成,3表示无法修理',
   `pictures` varchar(512) DEFAULT NULL COMMENT '报修图片，用逗号隔开',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tb_repair` */
+
+insert  into `tb_repair`(`id`,`applicantId`,`applicantName`,`telphone`,`addressId`,`address`,`reason`,`appointmentTime`,`repairmanId`,`repairTime`,`repairedTime`,`state`,`pictures`) values (16,'13456785636','这是','13456785636',1,'西二547','阳台灯坏了',1570675994,'13456785636',1570677942,1570677241,1,NULL);
 
 /*Table structure for table `tb_repairman` */
 
@@ -98,23 +100,24 @@ CREATE TABLE `tb_repairman` (
 
 /*Data for the table `tb_repairman` */
 
+insert  into `tb_repairman`(`number`,`telphone`,`name`,`addressIds`) values ('12323333331','13456785636','32444324444zs',NULL),('123456','13724125552','hghsg','1');
+
 /*Table structure for table `tb_user` */
 
 DROP TABLE IF EXISTS `tb_user`;
 
 CREATE TABLE `tb_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `telphone` char(11) NOT NULL COMMENT '电话',
   `number` varchar(20) DEFAULT NULL COMMENT '学号或职工号',
   `name` varchar(20) DEFAULT NULL COMMENT '姓名',
-  `telphone` char(11) DEFAULT NULL COMMENT '电话',
   `dormitoryId` int(11) DEFAULT NULL COMMENT '宿舍楼Id',
   `dormitoryNum` int(11) DEFAULT NULL COMMENT '宿舍号',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`telphone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tb_user` */
 
-insert  into `tb_user`(`id`,`number`,`name`,`telphone`,`dormitoryId`,`dormitoryNum`) values (1,'111111','zhangsan','12345678901',111,NULL),(2,NULL,NULL,NULL,0,NULL),(3,'111111','zhangsan',NULL,111,NULL),(4,'123','xiaoming',NULL,1,NULL);
+insert  into `tb_user`(`telphone`,`number`,`name`,`dormitoryId`,`dormitoryNum`) values ('12345678901','111111','zhangsan',111,NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

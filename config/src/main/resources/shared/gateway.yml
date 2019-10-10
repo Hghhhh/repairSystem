@@ -1,5 +1,9 @@
 server:
-  port: 80
+  port: 8443
+  ssl:
+    key-store: classpath:guohanghuang.cn.jks
+    key-store-password: 3116004636
+    keyStoreType: JKS
 
 zuul:
   ignoredServices: '*'
@@ -25,4 +29,3 @@ zuul:
 
 jwt:
   secret-key: jwtbanzhuan
-

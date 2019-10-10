@@ -82,7 +82,11 @@ public class RepairServiceImpl implements RepairService{
 
     @Override
     public List<RepairStaticDto> findByAddressIdAndAppointmentTimeBetween(Integer addressId, int beginT, int endT) {
-        List<Repair> repairs =  repairDao.findByAddressIdAndAppointmentTimeBetween(addressId,beginT,endT);
+        List<Repair> repairs = null;
+        if(addressId== null){
+            repairs = repairDao.findByAppointmentTimeBetween(beginT,endT);
+        }
+        else repairs =  repairDao.findByAddressIdAndAppointmentTimeBetween(addressId,beginT,endT);
         HashMap<Integer,Integer> map = new HashMap<>();
         for(int i=1;i<=12;i++){
             map.put(i,0);

@@ -31,6 +31,7 @@ public interface RepairDao extends JpaRepository<Repair,Integer> {
 
     List<Repair> findByAddressIdAndAppointmentTimeBetween(Integer addressId,int beginT,int endTime);
 
+    List<Repair> findByAppointmentTimeBetween(int beginT,int endTime);
 
 
 }
