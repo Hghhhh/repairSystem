@@ -14,6 +14,5 @@ import java.util.concurrent.TimeUnit;
 public class RepairServiceApplicationTests {
 
 	public static  void main(String[] args){
-		System.out.println(TimeUtil.getMonth(157062202));
 	}
 }

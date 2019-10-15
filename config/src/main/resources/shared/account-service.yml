@@ -22,7 +22,18 @@ spring:
       hibernate:
         hbm2ddl:
           auto: validate
-
+  redis:
+          database: 0
+          host: 127.0.0.1
+          port: 6379
+          password: rppt
+          jedis:
+            pool:
+                max-idle: 8
+                min-idle: 0
+                max-active: 8
+                max-wait: 5000s
+          timeout: 5000s
 
 #获取token的配置
 hmac:
